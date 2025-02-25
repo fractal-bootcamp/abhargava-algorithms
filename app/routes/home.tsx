@@ -10,7 +10,43 @@ export function meta() {
 	];
 }
 
+// Define an interface for algorithm categories
+interface AlgorithmCategory {
+	title: string;
+	description: string;
+	path: string;
+	buttonText: string;
+	buttonColor: string;
+}
+
 export default function Home() {
+	// Define the algorithm categories data
+	const algorithmCategories: AlgorithmCategory[] = [
+		{
+			title: "Search Algorithms",
+			description:
+				"Explore algorithms like Linear Search, Binary Search, Depth-First Search, and Breadth-First Search.",
+			path: "/search",
+			buttonText: "Explore Search Algorithms",
+			buttonColor: "bg-blue-500 hover:bg-blue-600",
+		},
+		{
+			title: "Sorting Algorithms",
+			description:
+				"Visualize algorithms like Bubble Sort, Insertion Sort, Selection Sort, Merge Sort, and Quick Sort.",
+			path: "/sort",
+			buttonText: "Explore Sorting Algorithms",
+			buttonColor: "bg-green-500 hover:bg-green-600",
+		},
+		{
+			title: "Path Planning",
+			description: "Coming soon: Dijkstra's Algorithm",
+			path: "/path-planning",
+			buttonText: "Explore Path Planning",
+			buttonColor: "bg-purple-500 hover:bg-purple-600",
+		},
+	];
+
 	return (
 		<div className="container mx-auto p-4">
 			<h1 className="text-4xl font-bold mb-6 text-center">
@@ -21,46 +57,23 @@ export default function Home() {
 			</p>
 
 			<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-				<div className="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-					<h2 className="text-2xl font-semibold mb-4">Search Algorithms</h2>
-					<p className="text-gray-600 mb-6">
-						Explore algorithms like Linear Search, Binary Search, Depth-First
-						Search, and Breadth-First Search.
-					</p>
-					<Link
-						to="/search"
-						className="block w-full bg-blue-500 text-white text-center py-2 px-4 rounded hover:bg-blue-600 transition-colors"
+				{algorithmCategories.map((category) => (
+					<div
+						key={category.path}
+						className="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow flex flex-col h-full"
 					>
-						Explore Search Algorithms
-					</Link>
-				</div>
-
-				<div className="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-					<h2 className="text-2xl font-semibold mb-4">Sorting Algorithms</h2>
-					<p className="text-gray-600 mb-6">
-						Visualize algorithms like Bubble Sort, Insertion Sort, Selection
-						Sort, Merge Sort, and Quick Sort.
-					</p>
-					<Link
-						to="/sort"
-						className="block w-full bg-green-500 text-white text-center py-2 px-4 rounded hover:bg-green-600 transition-colors"
-					>
-						Explore Sorting Algorithms
-					</Link>
-				</div>
-
-				<div className="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-					<h2 className="text-2xl font-semibold mb-4">Path Planning</h2>
-					<p className="text-gray-600 mb-6">
-						Coming soon: Dijkstra's Algorithm
-					</p>
-					<Link
-						to="/path-planning"
-						className="block w-full bg-purple-500 text-white text-center py-2 px-4 rounded hover:bg-purple-600 transition-colors"
-					>
-						Explore Path Planning
-					</Link>
-				</div>
+						<div className="flex-grow">
+							<h2 className="text-2xl font-semibold mb-4">{category.title}</h2>
+							<p className="text-gray-600 mb-6">{category.description}</p>
+						</div>
+						<Link
+							to={category.path}
+							className={`block w-full ${category.buttonColor} text-white text-center py-2 px-4 rounded transition-colors mt-auto`}
+						>
+							{category.buttonText}
+						</Link>
+					</div>
+				))}
 			</div>
 
 			<div className="mt-16 p-6 bg-gray-50 rounded-lg">
