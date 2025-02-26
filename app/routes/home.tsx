@@ -76,7 +76,7 @@ export default function Home() {
 				))}
 			</div>
 
-			<div className="mt-16 p-6 bg-gray-50 rounded-lg">
+			<div className="mt-16 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
 				<h2 className="text-2xl font-semibold mb-4">About This Project</h2>
 				<p className="mb-4">
 					This algorithm visualizer is designed to help you understand how
