@@ -2,7 +2,12 @@
 // Bubble Sort
 // 
 
-function bubbleSort(arr: number[]): number[] {
+export type BubbleSortInfo = {
+    array: number[];
+    swap: boolean;
+}
+
+export function bubbleSort(arr: number[], callback?: (info: BubbleSortInfo) => void): number[] {
     if (arr.length <= 1) {
         return arr;
     }
@@ -19,13 +24,13 @@ function bubbleSort(arr: number[]): number[] {
                 // Change the order of the numbers.
                 [arrCopy[j], arrCopy[j+1]] = [arrCopy[j+1], arrCopy[j]]
                 swap = true
+                callback?.({ array: arrCopy, swap: true })
             }
         }
         if (!swap) {
+            callback?.({ array: arrCopy, swap: false })
             return arrCopy
         }
     }
     return arrCopy;
 }
-
-console.log(bubbleSort([3, 6, 8, 10, 1, 2, 1, 4, 9, 10, 20, 25]))
