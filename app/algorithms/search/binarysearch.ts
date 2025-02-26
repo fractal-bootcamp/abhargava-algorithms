@@ -17,4 +17,4 @@ function binarySearch(arr: number[], target: number): number {
   return -1;
 }
 
-console.log(binarySearch([2, 3, 4, 10, 40, 50, 70], 10))
+export default binarySearch;
