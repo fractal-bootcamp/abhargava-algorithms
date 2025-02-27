@@ -7,6 +7,8 @@ export default [
 	...prefix("sort", [
 		route("quick", "routes/sort/quick.tsx"),
 		route("bubble", "routes/sort/bubble.tsx"),
+		route("insertion", "routes/sort/insertion.tsx"),
+		route("insertion-clean", "routes/sort/insertion-clean.tsx"),
 	]),
 	route("path-planning", "routes/path-planning.tsx"),
 ] satisfies RouteConfig;
